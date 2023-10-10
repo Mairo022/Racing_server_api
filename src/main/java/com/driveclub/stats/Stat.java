@@ -6,38 +6,46 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.UUID;
+import java.time.OffsetDateTime;
 
 @Entity
 @Data
 @Table(name="stats")
 public class Stat {
-    @Id @Column
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
     @Getter
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     @Getter @Setter
-    @Column
-    private UUID track_id;
+    @Column(nullable = false)
+    private String track;
 
     @Getter @Setter
-    @Column
-    private UUID driver_id;
+    @Column(nullable = false)
+    private String car;
 
     @Getter @Setter
-    @Column(precision = 8, scale = 3)
+    @Column(nullable = false)
+    private Long driver_id;
+
+    @Getter @Setter
+    @Column(length = 10, precision = 3, nullable = false)
     private BigDecimal split_one;
 
     @Getter @Setter
-    @Column(precision = 8, scale = 3)
+    @Column(length = 10, precision = 3, nullable = false)
     private BigDecimal split_two;
 
     @Getter @Setter
-    @Column(precision = 8, scale = 3)
+    @Column(length = 10, precision = 3, nullable = false)
     private BigDecimal split_three;
 
     @Getter @Setter
-    @Column(precision = 8, scale = 3)
+    @Column(length = 10, precision = 3, nullable = false)
     private BigDecimal laptime;
+
+    @Getter
+    @Temporal(TemporalType.TIMESTAMP)
+    private OffsetDateTime created_at;
 }
