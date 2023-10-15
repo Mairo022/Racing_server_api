@@ -5,6 +5,7 @@ import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class DriversService {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
         Specification<Driver> spec = Specification.where(null);
 
-        if (name != null) spec = spec.and((driver, cq, cb) ->
-                cb.like(cb.lower(driver.get("driver")), "%" + name.toLowerCase() + "%")
+        if (name != null) spec = spec.and((drivers, cq, cb) ->
+                cb.like(cb.lower(drivers.get("name")), "%" + name.toLowerCase() + "%")
         );
 
         return driversRepository
