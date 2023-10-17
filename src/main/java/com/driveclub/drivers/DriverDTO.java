@@ -30,12 +30,12 @@ public class DriverDTO {
     @Getter @Setter
     private Integer crashes;
 
-    @Getter
+    @Getter @Setter
     private BigDecimal crashes_per_hundred_km;
 
     @Getter @Setter
     private Integer infr;
 
-    @Getter
+    @Getter @Setter
     private BigDecimal infr_per_hundred_km;
 }
