@@ -1,42 +1,62 @@
 package com.driveclub.sessions;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.OffsetDateTime;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Data
 @Table(name="sessions")
 public class Session {
-    @Id @Getter
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @Id @Getter @Setter
+    @Column(nullable = false)
+    private UUID id;
 
     @Getter @Setter
-    @Column(nullable = false)
-    private UUID session_id;
+    @Column(nullable = false, length = 10)
+    private String type;
 
     @Getter @Setter
-    @Column(nullable = false)
-    private Long driver_id;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false, columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Date date;
 
     @Getter @Setter
-    @Column(nullable = false)
-    private Integer position;
+    @Column(precision = 4, scale = 1)
+    private BigDecimal fuel_rate;
 
     @Getter @Setter
-    @Column(nullable = false)
+    @Column(precision = 3, scale = 1)
+    private BigDecimal tyre_wear_rate;
+
+    @Getter @Setter
+    @Column
+    private Short air_temp;
+
+    @Getter @Setter
+    @Column
+    private Short road_temp;
+
+    @Getter @Setter
+    @Column(nullable = false, length = 100)
     private String track;
 
     @Getter @Setter
-    @Column(nullable = false)
-    private String car;
+    @Column
+    private boolean penalties;
 
-    @Getter
-    @Temporal(TemporalType.TIMESTAMP)
-    private OffsetDateTime created_at;
+    @Getter @Setter
+    @Column
+    private Short damage;
+
+    @Getter @Setter
+    @Column(length = 8)
+    private String duration;
+
+    @Getter @Setter
+    @Column(nullable = false, length = 200)
+    private String server;
 }

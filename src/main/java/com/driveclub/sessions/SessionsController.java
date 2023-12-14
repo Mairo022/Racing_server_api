@@ -3,9 +3,13 @@ package com.driveclub.sessions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/sessions")
@@ -15,22 +19,20 @@ public class SessionsController {
 
     @GetMapping(value = "getSessions")
     public ResponseEntity<Page<SessionDTO>> getSessions(
-            @RequestParam Pageable pageable)
+            @PageableDefault(
+                    page = 0,
+                    size = 50,
+                    sort = "date",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable)
     {
         return ResponseEntity.ok(sessionsService.getSessions(pageable));
     }
 
     @GetMapping(value="getSession")
     public ResponseEntity<SessionDTO> getSession(
-            @RequestParam Long id)
+            @RequestParam UUID id)
     {
         return ResponseEntity.ok(sessionsService.getSession(id));
-    }
-
-    @PostMapping(value="saveSession")
-    public ResponseEntity<SessionDTO> saveSession(
-            @RequestBody @Validated(SessionDTO.class) SessionDTO sessionDTO)
-    {
-        return ResponseEntity.ok(sessionsService.saveSession(sessionDTO));
     }
 }
