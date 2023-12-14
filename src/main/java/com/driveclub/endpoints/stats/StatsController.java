@@ -1,4 +1,4 @@
-package com.driveclub.stats;
+package com.driveclub.endpoints.stats;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,4 +1,4 @@
-package com.driveclub.logs;
+package com.driveclub.endpoints.logs;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

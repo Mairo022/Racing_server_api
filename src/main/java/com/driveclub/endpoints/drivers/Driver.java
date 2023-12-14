@@ -1,4 +1,4 @@
-package com.driveclub.drivers;
+package com.driveclub.endpoints.drivers;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

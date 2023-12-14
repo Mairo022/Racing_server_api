@@ -1,4 +1,4 @@
-package com.driveclub.drivers;
+package com.driveclub.endpoints.drivers;
 
 import com.driveclub.utils.ModelMapperFactory;
 import org.modelmapper.Conditions;

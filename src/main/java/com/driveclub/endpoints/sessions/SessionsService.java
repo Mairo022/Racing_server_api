@@ -1,4 +1,4 @@
-package com.driveclub.sessions;
+package com.driveclub.endpoints.sessions;
 
 import com.driveclub.utils.ModelMapperFactory;
 import org.modelmapper.ModelMapper;

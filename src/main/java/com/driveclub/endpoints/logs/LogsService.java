@@ -1,4 +1,4 @@
-package com.driveclub.logs;
+package com.driveclub.endpoints.logs;
 
 import com.driveclub.utils.ModelMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.driveclub.stats;
+package com.driveclub.endpoints.stats;
 
 import lombok.Getter;
 import lombok.Setter;

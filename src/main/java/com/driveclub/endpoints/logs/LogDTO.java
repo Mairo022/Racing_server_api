@@ -1,4 +1,4 @@
-package com.driveclub.logs;
+package com.driveclub.endpoints.logs;
 
 import jakarta.persistence.Column;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.driveclub.drivers;
+package com.driveclub.endpoints.drivers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
