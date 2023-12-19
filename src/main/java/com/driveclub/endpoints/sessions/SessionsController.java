@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -33,5 +34,11 @@ public class SessionsController {
             @RequestParam UUID id)
     {
         return ResponseEntity.ok(sessionsService.getSession(id));
+    }
+
+    @GetMapping(value="getOverviews")
+    public ResponseEntity<List> getOverviews()
+    {
+        return ResponseEntity.ok(sessionsService.getOverviews());
     }
 }

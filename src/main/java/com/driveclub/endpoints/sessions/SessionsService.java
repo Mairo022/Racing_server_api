@@ -1,6 +1,8 @@
 package com.driveclub.endpoints.sessions;
 
+import com.driveclub.endpoints.sessions.details.SessionDetailsRepository;
 import com.driveclub.utils.ModelMapperFactory;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,12 +10,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class SessionsService {
     @Autowired
     private SessionsRepository sessionsRepository;
+    @Autowired
+    SessionDetailsRepository sessionDetailsRepository;
 
     public Page<SessionDTO> getSessions(Pageable pageable) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
@@ -29,5 +35,9 @@ public class SessionsService {
                 .findById(session_id)
                 .map(session -> ModelMapperFactory.getMapper().map(session, SessionDTO.class))
                 .orElse(null);
+    }
+
+    public List getOverviews() {
+        return sessionsRepository.getOverviews();
     }
 }

@@ -1,8 +1,10 @@
 package com.driveclub.endpoints.sessions.details;
 
+import com.driveclub.endpoints.drivers.Driver;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
@@ -11,6 +13,10 @@ import java.util.UUID;
 @Entity
 @Table(name = "sessions_details")
 public class SessionDetails {
+    @OneToOne
+    @JoinColumn(name = "driver_id", referencedColumnName = "id")
+    private Driver driver;
+
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Setter(AccessLevel.NONE)
     @Column
@@ -33,6 +39,4 @@ public class SessionDetails {
 
     @Column(length = 4)
     private String rank;
-
-    private Long driver_id;
 }
