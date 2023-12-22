@@ -20,6 +20,11 @@ public interface SessionsRepository extends JpaRepository<Session, UUID>, JpaSpe
                 "s.date AS date," +
                 "s.track AS track," +
                 "(" +
+                "SELECT COUNT(*) " +
+                "FROM sessions_details " +
+                "WHERE session_id = s.id " +
+                ") AS total_drivers," +
+                "(" +
                     "SELECT STRING_AGG(sd.driver_id || ',' || sd.total_time || ',' || d.name, ',') " +
                     "FROM ( " +
                         "SELECT " +
