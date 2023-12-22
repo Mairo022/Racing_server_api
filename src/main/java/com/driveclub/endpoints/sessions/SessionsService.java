@@ -37,7 +37,7 @@ public class SessionsService {
                 .orElse(null);
     }
 
-    public List getOverviews() {
-        return sessionsRepository.getOverviews();
+    public Page<List> getOverviews(Pageable pageable) {
+        return sessionsRepository.getOverviews(pageable);
     }
 }

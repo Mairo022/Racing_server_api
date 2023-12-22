@@ -1,5 +1,7 @@
 package com.driveclub.endpoints.sessions;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -30,8 +32,8 @@ public interface SessionsRepository extends JpaRepository<Session, UUID>, JpaSpe
                     "JOIN drivers d ON sd.driver_id = d.id " +
                     "WHERE sd.row <= 3" +
                 ") AS details " +
-            "FROM sessions s;"
+            "FROM sessions s",
+            countQuery = "SELECT COUNT(*) FROM sessions"
     )
-
-    List getOverviews();
+    Page<List> getOverviews(Pageable pageable);
 }

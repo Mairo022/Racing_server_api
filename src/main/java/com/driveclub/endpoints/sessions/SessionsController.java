@@ -2,6 +2,7 @@ package com.driveclub.endpoints.sessions;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -37,8 +38,16 @@ public class SessionsController {
     }
 
     @GetMapping(value="getOverviews")
-    public ResponseEntity<List> getOverviews()
+    public ResponseEntity<Page<List>> getOverviews(
+            @PageableDefault(
+                    page = 0,
+                    size = 50
+            ) Pageable pageable)
     {
-        return ResponseEntity.ok(sessionsService.getOverviews());
+        if (!pageable.getSort().isEmpty()) {
+            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
+        }
+
+        return ResponseEntity.ok(sessionsService.getOverviews(pageable));
     }
 }
