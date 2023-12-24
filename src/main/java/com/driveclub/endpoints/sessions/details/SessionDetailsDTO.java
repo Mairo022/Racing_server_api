@@ -11,15 +11,15 @@ public class SessionDetailsDTO {
     @Setter(AccessLevel.NONE)
     private Long id;
 
-    private UUID session_id;
+    private UUID sessionID;
 
     private String car;
 
-    private String total_time;
+    private String totalTime;
 
-    private String fastest_lap;
+    private String fastestLap;
 
-    private String gap_to_first;
+    private String gapToFirst;
 
     private String rank;
 

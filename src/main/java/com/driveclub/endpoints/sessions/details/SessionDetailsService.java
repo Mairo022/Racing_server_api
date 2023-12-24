@@ -20,7 +20,7 @@ public class SessionDetailsService {
         Specification<SessionDetails> spec = Specification.where(null);
 
         if (sessionID != null) spec = spec.and((session, cq, cb) ->
-                cb.equal(session.get("session_id"), sessionID)
+                cb.equal(session.get("sessionID"), sessionID)
         );
 
         return sessionsDetailsRepository
