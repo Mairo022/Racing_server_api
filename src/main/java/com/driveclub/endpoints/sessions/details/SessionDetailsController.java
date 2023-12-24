@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
@@ -23,7 +24,8 @@ public class SessionDetailsController {
                     page = 0,
                     size = 50
             ) Pageable pageable,
-            UUID sessionID)
+           @RequestParam UUID sessionID
+    )
     {
         return ResponseEntity.ok(sessionDetailsService.getSessionDetails(pageable, sessionID));
     }
