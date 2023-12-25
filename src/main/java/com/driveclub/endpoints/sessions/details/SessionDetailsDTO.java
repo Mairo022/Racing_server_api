@@ -1,14 +1,13 @@
 package com.driveclub.endpoints.sessions.details;
 
-import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Setter;
 
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
 public class SessionDetailsDTO {
-    @Setter(AccessLevel.NONE)
     private Long id;
 
     private UUID sessionID;
@@ -23,5 +22,5 @@ public class SessionDetailsDTO {
 
     private String rank;
 
-    private Long driver_id;
+    private String name;
 }
