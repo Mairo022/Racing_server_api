@@ -22,7 +22,8 @@ public interface SessionDetailsRepository extends JpaRepository<SessionDetails, 
                 "sd.fastestLap, " +
                 "sd.gapToFirst, " +
                 "sd.rank, " +
-                "sd.driver.name) " +
+                "sd.driver.name, " +
+                "sd.driver.id) " +
             "FROM SessionDetails sd " +
             "WHERE sd.sessionID = :sessionID")
     List<SessionDetailsDTO> getDetails(Pageable pageable, @Param("sessionID") UUID sessionID);

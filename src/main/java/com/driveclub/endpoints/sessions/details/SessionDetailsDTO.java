@@ -23,4 +23,6 @@ public class SessionDetailsDTO {
     private String rank;
 
     private String name;
+
+    private Long driverID;
 }
