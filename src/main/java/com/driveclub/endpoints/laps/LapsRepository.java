@@ -1,5 +1,6 @@
 package com.driveclub.endpoints.laps;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -19,12 +20,30 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
                 "l.s1," +
                 "l.s2," +
                 "l.s3," +
-                "l.valid" +
+                "l.valid," +
+                "l.date" +
             ") " +
             "FROM Lap l " +
             "WHERE l.session.id = :sessionID AND l.driver.id = :driverID " +
             "ORDER BY l.id ASC")
     List<LapOverviewDTO> getDriverSessionLaps(@Param("sessionID") UUID sessionID, @Param("driverID") Long driverID);
+
+    @Query(value = "" +
+            "SELECT " +
+            "new com.driveclub.endpoints.laps.LapOverviewDTO( " +
+                "l.id," +
+                "l.driver.name," +
+                "l.track," +
+                "l.laptime," +
+                "l.s1," +
+                "l.s2," +
+                "l.s3," +
+                "l.valid," +
+                "l.date" +
+            ") " +
+            "FROM Lap l " +
+            "WHERE l.car = :car AND l.track = :track ")
+    List<LapOverviewDTO> findAllByCarTrack(Pageable pageable, @Param("car") String car, @Param("track") String track);
 
     @Query(value = "" +
             "SELECT " +

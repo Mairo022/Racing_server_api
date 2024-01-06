@@ -1,6 +1,9 @@
 package com.driveclub.endpoints.laps;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,21 @@ public class LapsController {
     )
     {
         return ResponseEntity.ok(lapsService.getDriverSessionLaps(sessionID, driverID));
+    }
+
+    @GetMapping(value="getLeaderboard")
+    public ResponseEntity<List<LapOverviewDTO>> getLeaderboard(
+            @PageableDefault(
+                    page = 0,
+                    size = 50,
+                    sort = "laptime",
+                    direction = Sort.Direction.ASC
+            ) Pageable pageable,
+            @RequestParam String car,
+            @RequestParam String track
+    )
+    {
+        return ResponseEntity.ok(lapsService.getLeaderboard(pageable, car, track));
     }
 
     @GetMapping(value="getLap")

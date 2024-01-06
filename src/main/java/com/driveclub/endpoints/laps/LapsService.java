@@ -1,6 +1,7 @@
 package com.driveclub.endpoints.laps;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,10 @@ public class LapsService {
 
     public List<LapOverviewDTO> getDriverSessionLaps(UUID sessionID, Long driverID) {
         return lapsRepository.getDriverSessionLaps(sessionID, driverID);
+    }
+
+    public List<LapOverviewDTO> getLeaderboard(Pageable pageable, String car, String track) {
+        return lapsRepository.findAllByCarTrack(pageable, car, track);
     }
 
     public Optional<Lap> getLap(int id) {

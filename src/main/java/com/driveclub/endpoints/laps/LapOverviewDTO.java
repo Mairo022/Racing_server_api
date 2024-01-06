@@ -3,6 +3,8 @@ package com.driveclub.endpoints.laps;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 public class LapOverviewDTO {
@@ -14,4 +16,5 @@ public class LapOverviewDTO {
     private String s2;
     private String s3;
     private boolean valid;
+    private Date date;
 }
