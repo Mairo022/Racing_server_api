@@ -19,4 +19,8 @@ public class LapsService {
     public Optional<Lap> getLap(int id) {
         return lapsRepository.findById(id);
     }
+
+    public LapSectorsDTO getBestSectorTimes(String track, Long driverID) {
+        return lapsRepository.getBestSectorTimes(track, driverID);
+    }
 }

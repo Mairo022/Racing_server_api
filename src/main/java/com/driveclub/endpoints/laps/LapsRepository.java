@@ -25,4 +25,15 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
             "WHERE l.session.id = :sessionID AND l.driver.id = :driverID " +
             "ORDER BY l.id ASC")
     List<LapOverviewDTO> getDriverSessionLaps(@Param("sessionID") UUID sessionID, @Param("driverID") Long driverID);
+
+    @Query(value = "" +
+            "SELECT " +
+            "new com.driveclub.endpoints.laps.LapSectorsDTO(" +
+                "MIN(l.s1), " +
+                "MIN(l.s2), " +
+                "MIN(l.s3)" +
+            ") " +
+            "FROM Lap l " +
+            "WHERE l.track = :track AND l.driver.id = :driverID AND valid=true")
+    LapSectorsDTO getBestSectorTimes(@Param("track") String track, @Param("driverID") Long driverID);
 }
