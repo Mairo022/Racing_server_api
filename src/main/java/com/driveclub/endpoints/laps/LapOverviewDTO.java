@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class LapOverviewsDTO {
+public class LapOverviewDTO {
     private int lapID;
     private String driver;
     private String track;

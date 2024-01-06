@@ -18,7 +18,7 @@ public class LapsController {
     private LapsService lapsService;
 
     @GetMapping(value="getDriverSessionLaps")
-    public ResponseEntity<List<LapOverviewsDTO>> getDriverSessionLaps(
+    public ResponseEntity<List<LapOverviewDTO>> getDriverSessionLaps(
             @RequestParam UUID sessionID,
             @RequestParam Long driverID
     )

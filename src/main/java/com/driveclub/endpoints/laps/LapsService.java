@@ -12,7 +12,7 @@ public class LapsService {
     @Autowired
     private LapsRepository lapsRepository;
 
-    public List<LapOverviewsDTO> getDriverSessionLaps(UUID sessionID, Long driverID) {
+    public List<LapOverviewDTO> getDriverSessionLaps(UUID sessionID, Long driverID) {
         return lapsRepository.getDriverSessionLaps(sessionID, driverID);
     }
 
