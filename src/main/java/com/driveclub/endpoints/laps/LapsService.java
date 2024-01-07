@@ -1,7 +1,8 @@
 package com.driveclub.endpoints.laps;
 
-import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
-import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
+import com.driveclub.endpoints.drivers.DriverDTO;
+import com.driveclub.endpoints.laps.dto.*;
+import com.driveclub.utils.ModelMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,25 @@ public class LapsService {
 
     public Optional<Lap> getLap(int id) {
         return lapsRepository.findById(id);
+    }
+
+    public LapStatDTO getLapStat(int id) {
+        LapDTO lap = lapsRepository
+                .findById(id)
+                .map(driver -> ModelMapperFactory.getMapper().map(driver, LapDTO.class))
+                .orElse(null);
+
+        if (lap != null) {
+            long driverID = lap.getDriver().getId();
+            String track = lap.getTrack();
+            String car = lap.getCar();
+
+            int totalLaps = lapsRepository.findLapsCountByDriverIDTrackCar(driverID, track, car);
+
+            return new LapStatDTO(lap, totalLaps);
+        }
+
+        return null;
     }
 
     public LapSectorsDTO getBestSectorTimes(String track, Long driverID) {

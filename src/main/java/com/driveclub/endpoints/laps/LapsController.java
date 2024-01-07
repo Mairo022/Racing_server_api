@@ -2,6 +2,7 @@ package com.driveclub.endpoints.laps;
 
 import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
 import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
+import com.driveclub.endpoints.laps.dto.LapStatDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -49,6 +50,11 @@ public class LapsController {
     @GetMapping(value="getLap")
     public ResponseEntity<Optional<Lap>> getLap(@RequestParam int id) {
         return ResponseEntity.ok(lapsService.getLap(id));
+    }
+
+    @GetMapping(value="getLapStat")
+    public ResponseEntity<LapStatDTO> getLapStat(@RequestParam int id) {
+        return ResponseEntity.ok(lapsService.getLapStat(id));
     }
 
     @GetMapping(value="getBestSectors")

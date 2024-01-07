@@ -58,4 +58,7 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
             "FROM Lap l " +
             "WHERE l.track = :track AND l.driver.id = :driverID AND valid=true")
     LapSectorsDTO getBestSectorTimes(@Param("track") String track, @Param("driverID") Long driverID);
+
+    @Query(value = "SELECT COUNT(*) FROM Lap l WHERE l.driver.id = :driverID AND l.car = :car AND l.track = :track")
+    int findLapsCountByDriverIDTrackCar(@Param("driverID") long driverID, @Param("track") String track, @Param("car") String car);
 }
