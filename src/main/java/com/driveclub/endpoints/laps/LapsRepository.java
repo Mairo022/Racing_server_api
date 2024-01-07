@@ -42,7 +42,8 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
                 "l.date" +
             ") " +
             "FROM Lap l " +
-            "WHERE l.car = :car AND l.track = :track ")
+            "WHERE l.car = :car AND l.track = :track ",
+            countQuery = "SELECT COUNT(*) FROM Lap l WHERE l.car = :car AND l.track = :track")
     List<LapOverviewDTO> findAllByCarTrack(Pageable pageable, @Param("car") String car, @Param("track") String track);
 
     @Query(value = "" +
