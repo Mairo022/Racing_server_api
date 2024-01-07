@@ -1,4 +1,4 @@
-package com.driveclub.endpoints.laps;
+package com.driveclub.endpoints.laps.dto;
 
 import com.driveclub.endpoints.drivers.Driver;
 import com.driveclub.endpoints.sessions.Session;

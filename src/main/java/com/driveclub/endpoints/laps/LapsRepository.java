@@ -1,5 +1,7 @@
 package com.driveclub.endpoints.laps;
 
+import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
+import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -12,7 +14,7 @@ import java.util.UUID;
 public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecificationExecutor<Lap> {
     @Query(value = "" +
             "SELECT " +
-            "new com.driveclub.endpoints.laps.LapOverviewDTO( " +
+            "new com.driveclub.endpoints.laps.dto.LapOverviewDTO( " +
                 "l.id," +
                 "l.driver.name," +
                 "l.track," +
@@ -30,7 +32,7 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
 
     @Query(value = "" +
             "SELECT " +
-            "new com.driveclub.endpoints.laps.LapOverviewDTO( " +
+            "new com.driveclub.endpoints.laps.dto.LapOverviewDTO( " +
                 "l.id," +
                 "l.driver.name," +
                 "l.track," +
@@ -48,7 +50,7 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
 
     @Query(value = "" +
             "SELECT " +
-            "new com.driveclub.endpoints.laps.LapSectorsDTO(" +
+            "new com.driveclub.endpoints.laps.dto.LapSectorsDTO(" +
                 "MIN(l.s1), " +
                 "MIN(l.s2), " +
                 "MIN(l.s3)" +

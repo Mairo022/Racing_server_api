@@ -1,4 +1,4 @@
-package com.driveclub.endpoints.laps;
+package com.driveclub.endpoints.laps.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

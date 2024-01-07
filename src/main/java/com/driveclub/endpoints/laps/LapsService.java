@@ -1,5 +1,7 @@
 package com.driveclub.endpoints.laps;
 
+import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
+import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
