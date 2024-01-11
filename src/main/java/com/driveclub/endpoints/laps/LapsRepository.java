@@ -1,5 +1,6 @@
 package com.driveclub.endpoints.laps;
 
+import com.driveclub.endpoints.laps.dto.LapDriverValidDTO;
 import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
 import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
 import org.springframework.data.domain.Pageable;
@@ -61,4 +62,26 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
 
     @Query(value = "SELECT COUNT(*) FROM Lap l WHERE l.driver.id = :driverID AND l.car = :car AND l.track = :track")
     int findLapsCountByDriverIDTrackCar(@Param("driverID") long driverID, @Param("track") String track, @Param("car") String car);
+
+    @Query(value="" +
+            "SELECT new com.driveclub.endpoints.laps.dto.LapDriverValidDTO(" +
+            "   l.id," +
+            "   l.car," +
+            "   l.track," +
+            "   l.laptime," +
+            "   l.s1," +
+            "   l.s2," +
+            "   l.s3," +
+            "   l.date" +
+            ") " +
+            "FROM Lap l " +
+            "WHERE (l.laptime) IN (" +
+            "   SELECT MIN(laptime)" +
+            "   FROM Lap" +
+            "   WHERE driver.id = :driverID AND valid = true" +
+            "   GROUP BY car, track" +
+            ")",
+            countQuery = "SELECT COUNT(*) FROM Lap l WHERE l.driver.id = :driverID AND valid = true"
+    )
+    List<LapDriverValidDTO> findValidDriverLaps(Pageable pageable, @Param("driverID") long driverID);
 }

@@ -1,5 +1,6 @@
 package com.driveclub.endpoints.laps;
 
+import com.driveclub.endpoints.laps.dto.LapDriverValidDTO;
 import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
 import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
 import com.driveclub.endpoints.laps.dto.LapStatDTO;
@@ -64,5 +65,19 @@ public class LapsController {
     )
     {
         return ResponseEntity.ok(lapsService.getBestSectorTimes(track, driverID));
+    }
+
+    @GetMapping(value = "getValidDriverLaps")
+    public ResponseEntity<List<LapDriverValidDTO>> getValidDriverLaps(
+            @PageableDefault(
+                    page = 0,
+                    size = 20,
+                    sort = "date",
+                    direction = Sort.Direction.DESC
+            ) Pageable pageable,
+            @RequestParam Long driverID
+    )
+    {
+        return ResponseEntity.ok(lapsService.findValidDriverLaps(pageable, driverID));
     }
 }

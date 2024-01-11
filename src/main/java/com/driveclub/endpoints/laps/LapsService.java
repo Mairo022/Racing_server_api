@@ -1,6 +1,5 @@
 package com.driveclub.endpoints.laps;
 
-import com.driveclub.endpoints.drivers.DriverDTO;
 import com.driveclub.endpoints.laps.dto.*;
 import com.driveclub.utils.ModelMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +48,9 @@ public class LapsService {
 
     public LapSectorsDTO getBestSectorTimes(String track, Long driverID) {
         return lapsRepository.getBestSectorTimes(track, driverID);
+    }
+
+    public List<LapDriverValidDTO> findValidDriverLaps(Pageable pageable, Long driverID) {
+        return lapsRepository.findValidDriverLaps(pageable, driverID);
     }
 }
