@@ -19,8 +19,8 @@ public class LapsService {
         return lapsRepository.getDriverSessionLaps(sessionID, driverID);
     }
 
-    public List<LapOverviewDTO> getLeaderboard(Pageable pageable, String car, String track) {
-        return lapsRepository.findAllByCarTrack(pageable, car, track);
+    public List<LapLeaderboardDTO> findBestValidLaps(Pageable pageable, String car, String track) {
+        return lapsRepository.findBestValidLaps(pageable, car, track);
     }
 
     public Optional<Lap> getLap(int id) {

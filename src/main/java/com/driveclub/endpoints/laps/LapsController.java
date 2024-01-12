@@ -1,9 +1,6 @@
 package com.driveclub.endpoints.laps;
 
-import com.driveclub.endpoints.laps.dto.LapDriverValidDTO;
-import com.driveclub.endpoints.laps.dto.LapOverviewDTO;
-import com.driveclub.endpoints.laps.dto.LapSectorsDTO;
-import com.driveclub.endpoints.laps.dto.LapStatDTO;
+import com.driveclub.endpoints.laps.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -34,7 +31,7 @@ public class LapsController {
     }
 
     @GetMapping(value="getLeaderboard")
-    public ResponseEntity<List<LapOverviewDTO>> getLeaderboard(
+    public ResponseEntity<List<LapLeaderboardDTO>> getLeaderboard(
             @PageableDefault(
                     page = 0,
                     size = 50,
@@ -45,7 +42,7 @@ public class LapsController {
             @RequestParam String track
     )
     {
-        return ResponseEntity.ok(lapsService.getLeaderboard(pageable, car, track));
+        return ResponseEntity.ok(lapsService.findBestValidLaps(pageable, car, track));
     }
 
     @GetMapping(value="getLap")
