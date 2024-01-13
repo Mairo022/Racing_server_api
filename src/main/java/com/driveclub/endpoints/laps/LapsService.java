@@ -46,8 +46,8 @@ public class LapsService {
         return null;
     }
 
-    public LapSectorsDTO getBestSectorTimes(String track, Long driverID) {
-        return lapsRepository.getBestSectorTimes(track, driverID);
+    public LapSectorsDTO findDriverBestSectors(String track, Long driverID, String car) {
+        return lapsRepository.findDriverBestSectors(track, driverID, car);
     }
 
     public List<LapDriverValidDTO> findValidDriverLaps(Pageable pageable, Long driverID) {

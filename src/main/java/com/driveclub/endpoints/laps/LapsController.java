@@ -55,13 +55,14 @@ public class LapsController {
         return ResponseEntity.ok(lapsService.getLapStat(id));
     }
 
-    @GetMapping(value="getBestSectors")
-    public ResponseEntity<LapSectorsDTO> getBestSectorTimes(
+    @GetMapping(value="getDriverBestSectors")
+    public ResponseEntity<LapSectorsDTO> getDriverBestSectors(
+            @RequestParam String car,
             @RequestParam String track,
             @RequestParam Long driverID
     )
     {
-        return ResponseEntity.ok(lapsService.getBestSectorTimes(track, driverID));
+        return ResponseEntity.ok(lapsService.findDriverBestSectors(track, driverID, car));
     }
 
     @GetMapping(value = "getValidDriverLaps")
