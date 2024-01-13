@@ -1,8 +1,9 @@
 package com.driveclub.endpoints.logs;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
+import lombok.Setter;
 
 import java.time.OffsetDateTime;
 
@@ -10,16 +11,13 @@ import java.time.OffsetDateTime;
 @Data
 @Table(name="logs")
 public class Log {
-    @Id @Column
+    @Id @Setter(AccessLevel.NONE)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Getter
     private Long id;
 
-    @Getter
     @Column(nullable = false)
     private OffsetDateTime date;
 
-    @Getter
     @Column(nullable = false)
     private String event;
 }

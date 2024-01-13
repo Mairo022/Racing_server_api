@@ -2,12 +2,14 @@ package com.driveclub.endpoints.laps.dto;
 
 import com.driveclub.endpoints.drivers.Driver;
 import com.driveclub.endpoints.sessions.Session;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 public class LapDTO {
     private int id;
     private Session session;

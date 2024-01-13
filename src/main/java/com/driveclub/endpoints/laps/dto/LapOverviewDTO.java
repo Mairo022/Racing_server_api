@@ -1,11 +1,11 @@
 package com.driveclub.endpoints.laps.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.Date;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class LapOverviewDTO {
     private int lapID;

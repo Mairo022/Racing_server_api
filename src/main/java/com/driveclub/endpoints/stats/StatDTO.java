@@ -1,36 +1,23 @@
 package com.driveclub.endpoints.stats;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+@Data
+@AllArgsConstructor
 public class StatDTO {
-    @Getter
+    @Setter(AccessLevel.NONE)
     private Long id;
-
-    @Getter @Setter
     private String car;
-
-    @Getter @Setter
     private String track;
-
-    @Getter @Setter
     private Long driver_id;
-
-    @Getter @Setter
     private BigDecimal split_one;
-
-    @Getter @Setter
     private BigDecimal split_two;
-
-    @Getter @Setter
     private BigDecimal split_three;
-
-    @Getter @Setter
     private BigDecimal laptime;
 
-    @Getter
+    @Setter(AccessLevel.NONE)
     private OffsetDateTime created_at;
 }

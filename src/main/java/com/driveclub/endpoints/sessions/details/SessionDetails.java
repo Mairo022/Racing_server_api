@@ -12,13 +12,13 @@ import java.util.UUID;
 @Entity
 @Table(name = "sessions_details")
 public class SessionDetails {
+    @Setter(AccessLevel.NONE)
     @OneToOne
     @JoinColumn(name = "driver_id", referencedColumnName = "id")
     private Driver driver;
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Setter(AccessLevel.NONE)
-    @Column
     private Long id;
 
     @Column(nullable = false, name = "session_id")

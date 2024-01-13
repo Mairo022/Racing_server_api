@@ -1,41 +1,22 @@
 package com.driveclub.endpoints.drivers;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
+@Data
+@AllArgsConstructor
 public class DriverDTO {
-    @Getter @Setter
     private Long id;
-
-    @Getter @Setter
     private String name;
-
-    @Getter @Setter
     private Integer money;
-
-    @Getter @Setter
     private Integer wins;
-
-    @Getter @Setter
     private Integer podiums;
-
-    @Getter @Setter
     private Integer poles;
-
-    @Getter @Setter
     private BigDecimal driven;
-
-    @Getter @Setter
     private Integer crashes;
-
-    @Getter @Setter
     private BigDecimal crashes_per_hundred_km;
-
-    @Getter @Setter
     private Integer infr;
-
-    @Getter @Setter
     private BigDecimal infr_per_hundred_km;
 }
