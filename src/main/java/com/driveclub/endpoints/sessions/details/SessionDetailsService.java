@@ -12,7 +12,7 @@ public class SessionDetailsService {
     @Autowired
     private SessionDetailsRepository sessionsDetailsRepository;
 
-    public List<SessionDetailsDTO> getSessionDetails(Pageable pageable, UUID sessionID) {
-        return sessionsDetailsRepository.getDetails(pageable, sessionID);
+    public List<SessionDetailsDTO> findAll(Pageable pageable, UUID sessionID) {
+        return sessionsDetailsRepository.findAll(pageable, sessionID);
     }
 }

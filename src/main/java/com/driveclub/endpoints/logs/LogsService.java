@@ -13,7 +13,7 @@ public class LogsService {
     @Autowired
     private LogsRepository logsRepository;
 
-    public Page<LogDTO> getLogs(Pageable pageable) {
+    public Page<LogDTO> findAll(Pageable pageable) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
 
         return logsRepository

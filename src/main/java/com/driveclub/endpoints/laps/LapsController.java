@@ -27,7 +27,7 @@ public class LapsController {
             @RequestParam Long driverID
     )
     {
-        return ResponseEntity.ok(lapsService.getDriverSessionLaps(sessionID, driverID));
+        return ResponseEntity.ok(lapsService.findSessionLapsOfDriver(sessionID, driverID));
     }
 
     @GetMapping(value="getLeaderboard")
@@ -47,12 +47,12 @@ public class LapsController {
 
     @GetMapping(value="getLap")
     public ResponseEntity<Optional<Lap>> getLap(@RequestParam int id) {
-        return ResponseEntity.ok(lapsService.getLap(id));
+        return ResponseEntity.ok(lapsService.findLap(id));
     }
 
     @GetMapping(value="getLapStat")
     public ResponseEntity<LapStatDTO> getLapStat(@RequestParam int id) {
-        return ResponseEntity.ok(lapsService.getLapStat(id));
+        return ResponseEntity.ok(lapsService.findLapAndTotalCombinationLapsOfDriver(id));
     }
 
     @GetMapping(value="getDriverBestSectors")

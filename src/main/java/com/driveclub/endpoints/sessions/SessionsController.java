@@ -19,7 +19,7 @@ public class SessionsController {
     private SessionsService sessionsService;
 
     @GetMapping(value = "getSessions")
-    public ResponseEntity<Page<SessionDTO>> getSessions(
+    public ResponseEntity<Page<SessionDTO>> getAll(
             @PageableDefault(
                     page = 0,
                     size = 50,
@@ -27,14 +27,14 @@ public class SessionsController {
                     direction = Sort.Direction.DESC
             ) Pageable pageable)
     {
-        return ResponseEntity.ok(sessionsService.getSessions(pageable));
+        return ResponseEntity.ok(sessionsService.findAll(pageable));
     }
 
     @GetMapping(value="getSession")
     public ResponseEntity<SessionDTO> getSession(
             @RequestParam UUID id)
     {
-        return ResponseEntity.ok(sessionsService.getSession(id));
+        return ResponseEntity.ok(sessionsService.findSession(id));
     }
 
     @GetMapping(value="getOverviews")
@@ -48,6 +48,6 @@ public class SessionsController {
             pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
         }
 
-        return ResponseEntity.ok(sessionsService.getOverviews(pageable));
+        return ResponseEntity.ok(sessionsService.findOverviews(pageable));
     }
 }

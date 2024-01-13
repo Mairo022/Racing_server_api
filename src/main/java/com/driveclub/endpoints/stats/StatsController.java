@@ -15,19 +15,19 @@ public class StatsController {
     private StatsService statsService;
 
     @GetMapping(value = "getStats")
-    public ResponseEntity<Page<StatDTO>> getStats(
+    public ResponseEntity<Page<StatDTO>> getAll(
             @RequestParam String car,
             @RequestParam String track,
             @RequestParam Pageable pageable)
     {
-        return ResponseEntity.ok(statsService.getStats(pageable, track, car));
+        return ResponseEntity.ok(statsService.findAll(pageable, track, car));
     }
 
     @GetMapping(value="getStat")
     public ResponseEntity<StatDTO> getStat(
             @RequestParam Long id)
     {
-        return ResponseEntity.ok(statsService.getStat(id));
+        return ResponseEntity.ok(statsService.findOne(id));
     }
 
     @PostMapping(value="saveStat")

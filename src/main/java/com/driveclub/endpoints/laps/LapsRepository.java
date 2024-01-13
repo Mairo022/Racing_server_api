@@ -30,7 +30,7 @@ public interface LapsRepository extends JpaRepository<Lap, Integer>, JpaSpecific
             "FROM Lap l " +
             "WHERE l.session.id = :sessionID AND l.driver.id = :driverID " +
             "ORDER BY l.id ASC")
-    List<LapOverviewDTO> getDriverSessionLaps(@Param("sessionID") UUID sessionID, @Param("driverID") Long driverID);
+    List<LapOverviewDTO> findSessionLapsOfDriver(@Param("sessionID") UUID sessionID, @Param("driverID") Long driverID);
 
     @Query(value = "" +
             "SELECT " +

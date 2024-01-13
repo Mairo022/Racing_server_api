@@ -19,7 +19,7 @@ public class SessionDetailsController {
     private SessionDetailsService sessionDetailsService;
 
     @GetMapping(value="getDetails")
-    public ResponseEntity<List<SessionDetailsDTO>> getDetails(
+    public ResponseEntity<List<SessionDetailsDTO>> getAll(
             @PageableDefault(
                     page = 0,
                     size = 50
@@ -27,6 +27,6 @@ public class SessionDetailsController {
            @RequestParam UUID sessionID
     )
     {
-        return ResponseEntity.ok(sessionDetailsService.getSessionDetails(pageable, sessionID));
+        return ResponseEntity.ok(sessionDetailsService.findAll(pageable, sessionID));
     }
 }

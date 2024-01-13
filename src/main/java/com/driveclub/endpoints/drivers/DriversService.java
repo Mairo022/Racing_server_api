@@ -5,7 +5,6 @@ import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class DriversService {
     @Autowired
     private DriversRepository driversRepository;
 
-    public Page<DriverDTO> getDrivers(Pageable pageable, String name) {
+    public Page<DriverDTO> findDrivers(Pageable pageable, String name) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
         Specification<Driver> spec = Specification.where(null);
 
@@ -28,7 +27,7 @@ public class DriversService {
                 .map(driver -> modelMapper.map(driver, DriverDTO.class));
     }
 
-    public DriverDTO getDriver(Long id) {
+    public DriverDTO findDriverByID(Long id) {
         return driversRepository
                 .findById(id)
                 .map(driver -> ModelMapperFactory.getMapper().map(driver, DriverDTO.class))

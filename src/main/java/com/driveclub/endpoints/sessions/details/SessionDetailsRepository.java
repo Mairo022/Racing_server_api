@@ -26,6 +26,6 @@ public interface SessionDetailsRepository extends JpaRepository<SessionDetails, 
                 "sd.driver.id) " +
             "FROM SessionDetails sd " +
             "WHERE sd.sessionID = :sessionID")
-    List<SessionDetailsDTO> getDetails(Pageable pageable, @Param("sessionID") UUID sessionID);
+    List<SessionDetailsDTO> findAll(Pageable pageable, @Param("sessionID") UUID sessionID);
 }
 

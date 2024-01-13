@@ -15,19 +15,19 @@ public class LapsService {
     @Autowired
     private LapsRepository lapsRepository;
 
-    public List<LapOverviewDTO> getDriverSessionLaps(UUID sessionID, Long driverID) {
-        return lapsRepository.getDriverSessionLaps(sessionID, driverID);
+    public List<LapOverviewDTO> findSessionLapsOfDriver(UUID sessionID, Long driverID) {
+        return lapsRepository.findSessionLapsOfDriver(sessionID, driverID);
     }
 
     public List<LapLeaderboardDTO> findBestValidLaps(Pageable pageable, String car, String track) {
         return lapsRepository.findBestValidLaps(pageable, car, track);
     }
 
-    public Optional<Lap> getLap(int id) {
+    public Optional<Lap> findLap(int id) {
         return lapsRepository.findById(id);
     }
 
-    public LapStatDTO getLapStat(int id) {
+    public LapStatDTO findLapAndTotalCombinationLapsOfDriver(int id) {
         LapDTO lap = lapsRepository
                 .findById(id)
                 .map(driver -> ModelMapperFactory.getMapper().map(driver, LapDTO.class))

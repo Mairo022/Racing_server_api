@@ -17,7 +17,7 @@ public class LogsController {
     public ResponseEntity<Page<LogDTO>> getLogs(
             @RequestParam Pageable pageable)
     {
-        return ResponseEntity.ok(logsService.getLogs(pageable));
+        return ResponseEntity.ok(logsService.findAll(pageable));
     }
 
     @PostMapping(value="saveLog")

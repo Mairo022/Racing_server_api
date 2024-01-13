@@ -25,14 +25,14 @@ public class DriversController {
                     direction = Sort.Direction.DESC
             ) Pageable pageable)
     {
-        return ResponseEntity.ok(driversService.getDrivers(pageable, name));
+        return ResponseEntity.ok(driversService.findDrivers(pageable, name));
     }
 
     @GetMapping(value="getDriver")
     public ResponseEntity<DriverDTO> getDriver(
             @RequestParam Long id)
     {
-        return ResponseEntity.ok(driversService.getDriver(id));
+        return ResponseEntity.ok(driversService.findDriverByID(id));
     }
 
     @PostMapping(value="saveDriver")

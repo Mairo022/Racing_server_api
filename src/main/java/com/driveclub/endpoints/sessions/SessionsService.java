@@ -1,6 +1,5 @@
 package com.driveclub.endpoints.sessions;
 
-import com.driveclub.endpoints.sessions.details.SessionDetailsRepository;
 import com.driveclub.utils.ModelMapperFactory;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,10 +17,8 @@ import java.util.UUID;
 public class SessionsService {
     @Autowired
     private SessionsRepository sessionsRepository;
-    @Autowired
-    SessionDetailsRepository sessionDetailsRepository;
 
-    public Page<SessionDTO> getSessions(Pageable pageable) {
+    public Page<SessionDTO> findAll(Pageable pageable) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
         Specification<Session> spec = Specification.where(null);
 
@@ -30,14 +27,14 @@ public class SessionsService {
                 .map(session -> modelMapper.map(session, SessionDTO.class));
     }
 
-    public SessionDTO getSession(UUID session_id) {
+    public SessionDTO findSession(UUID session_id) {
         return sessionsRepository
                 .findById(session_id)
                 .map(session -> ModelMapperFactory.getMapper().map(session, SessionDTO.class))
                 .orElse(null);
     }
 
-    public Page<List> getOverviews(Pageable pageable) {
-        return sessionsRepository.getOverviews(pageable);
+    public Page<List> findOverviews(Pageable pageable) {
+        return sessionsRepository.findOverviews(pageable);
     }
 }

@@ -40,5 +40,5 @@ public interface SessionsRepository extends JpaRepository<Session, UUID>, JpaSpe
             "FROM sessions s",
             countQuery = "SELECT COUNT(*) FROM sessions"
     )
-    Page<List> getOverviews(Pageable pageable);
+    Page<List> findOverviews(Pageable pageable);
 }

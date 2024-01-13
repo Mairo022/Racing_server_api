@@ -14,7 +14,7 @@ public class StatsService {
     @Autowired
     private StatsRepository statsRepository;
 
-    public Page<StatDTO> getStats(Pageable pageable, String track, String car) {
+    public Page<StatDTO> findAll(Pageable pageable, String track, String car) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
         Specification<Stat> spec = Specification.where(null);
 
@@ -30,7 +30,7 @@ public class StatsService {
                 .map(stat -> modelMapper.map(stat, StatDTO.class));
     }
 
-    public StatDTO getStat(Long id) {
+    public StatDTO findOne(Long id) {
         return statsRepository
                 .findById(id)
                 .map(stat -> ModelMapperFactory.getMapper().map(stat, StatDTO.class))
