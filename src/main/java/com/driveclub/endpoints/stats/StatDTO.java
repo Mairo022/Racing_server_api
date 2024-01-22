@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class StatDTO {
     @Setter(AccessLevel.NONE)
     private Long id;
