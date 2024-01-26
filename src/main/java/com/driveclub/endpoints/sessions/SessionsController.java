@@ -41,13 +41,11 @@ public class SessionsController {
     public ResponseEntity<Page<List>> getOverviews(
             @PageableDefault(
                     page = 0,
-                    size = 50
+                    size = 50,
+                    sort = "date",
+                    direction = Sort.Direction.DESC
             ) Pageable pageable)
     {
-        if (!pageable.getSort().isEmpty()) {
-            pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
-        }
-
         return ResponseEntity.ok(sessionsService.findOverviews(pageable));
     }
 }
