@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface TrackRepository extends JpaRepository<Track, Short>, JpaSpecificationExecutor<Track> {
-    @Query(value="SELECT track FROM Track")
+    @Query(value="SELECT track FROM Track ORDER BY track ASC")
     List<String> findAllTracks();
 }

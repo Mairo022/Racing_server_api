@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Short>, JpaSpecificationExecutor<Car> {
-    @Query(value="SELECT car FROM Car")
+    @Query(value="SELECT car FROM Car ORDER BY car ASC")
     List<String> findAllCars();
 }
