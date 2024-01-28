@@ -36,6 +36,5 @@ public class SessionDetails {
     @Column(length = 12, name = "gap_to_first")
     private String gapToFirst;
 
-    @Column(length = 4)
-    private String rank;
+    private short rank;
 }

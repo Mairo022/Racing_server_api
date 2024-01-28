@@ -16,7 +16,7 @@ public class SessionDetailsDTO {
     private String totalTime;
     private String fastestLap;
     private String gapToFirst;
-    private String rank;
+    private short rank;
     private String name;
     private Long driverID;
 }
